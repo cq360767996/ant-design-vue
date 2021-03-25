@@ -73,12 +73,12 @@ describe('Popconfirm', () => {
     }, 1000);
   });
 
-  it('should not open in disabled', async () => {
+  fit('should not open in disabled', async () => {
     const popconfirm = mount(
       {
         render() {
           return (
-            <Popconfirm ref="popconfirm" title="code" disabled>
+            <Popconfirm ref="popconfirm" title="code" disabled={true}>
               <span>click me</span>
             </Popconfirm>
           );
@@ -86,13 +86,9 @@ describe('Popconfirm', () => {
       },
       { sync: false },
     );
-
-    await asyncExpect(() => {
-      popconfirm.find('span').trigger('click');
-    }, 1000);
-    await asyncExpect(() => {
-      const popup = popconfirm.vm.$refs.popconfirm.getPopupDomNode();
-      expect(popup).toBeFalsy();
-    }, 1000);
+    popconfirm.find('span').trigger('click');
+    popconfirm.vm.$refs.popconfirm.$forceUpdate();
+    const popup = popconfirm.vm.$refs.popconfirm.getPopupDomNode();
+    expect(popup).toBeFalsy();
   });
 });
