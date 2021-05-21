@@ -3,12 +3,11 @@ injectRequire();
 const path = require('path');
 const webpack = require('webpack');
 const WebpackBar = require('webpackbar');
-const webpackMerge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
-const postcssConfig = require('./postcssConfig');
 const CleanUpStatsPlugin = require('./utils/CleanUpStatsPlugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
@@ -39,6 +38,7 @@ function getWebpackConfig(modules) {
     babelConfig.plugins.push(require.resolve('./replaceLib'));
   }
 
+  /** @type {import('webpack').Configuration} */
   const config = {
     devtool: 'source-map',
 
@@ -65,20 +65,19 @@ function getWebpackConfig(modules) {
       alias: {
         '@': process.cwd(),
       },
+      fallback: [
+        'child_process',
+        'cluster',
+        'dgram',
+        'dns',
+        'fs',
+        'module',
+        'net',
+        'readline',
+        'repl',
+        'tls',
+      ].reduce((acc, name) => Object.assign({}, acc, { [name]: false }), {}),
     },
-
-    node: [
-      'child_process',
-      'cluster',
-      'dgram',
-      'dns',
-      'fs',
-      'module',
-      'net',
-      'readline',
-      'repl',
-      'tls',
-    ].reduce((acc, name) => Object.assign({}, acc, { [name]: 'empty' }), {}),
 
     module: {
       noParse: [/moment.js/],
@@ -97,7 +96,10 @@ function getWebpackConfig(modules) {
                       options: {
                         presets: [resolve('@babel/preset-env')],
                         plugins: [
-                          [resolve('@vue/babel-plugin-jsx'), { mergeProps: false }],
+                          [
+                            resolve('@vue/babel-plugin-jsx'),
+                            { mergeProps: false, enableObjectSlots: false },
+                          ],
                           resolve('@babel/plugin-proposal-object-rest-spread'),
                         ],
                       },
@@ -138,7 +140,12 @@ function getWebpackConfig(modules) {
             },
             {
               loader: 'postcss-loader',
-              options: Object.assign({}, postcssConfig, { sourceMap: true }),
+              options: {
+                postcssOptions: {
+                  plugins: ['autoprefixer'],
+                },
+                sourceMap: true,
+              },
             },
           ],
         },
@@ -154,7 +161,12 @@ function getWebpackConfig(modules) {
             },
             {
               loader: 'postcss-loader',
-              options: Object.assign({}, postcssConfig, { sourceMap: true }),
+              options: {
+                postcssOptions: {
+                  plugins: ['autoprefixer'],
+                },
+                sourceMap: true,
+              },
             },
             {
               loader: 'less-loader',
@@ -196,6 +208,9 @@ All rights reserved.
       }),
       new CleanUpStatsPlugin(),
     ],
+    performance: {
+      hints: false,
+    },
   };
 
   if (process.env.RUN_ENV === 'PRODUCTION') {
@@ -213,13 +228,16 @@ All rights reserved.
     config.optimization = {
       minimizer: [
         new TerserPlugin({
-          sourceMap: true,
+          parallel: true,
+          terserOptions: {
+            warnings: false,
+          },
         }),
       ],
     };
 
     // Development
-    const uncompressedConfig = webpackMerge({}, config, {
+    const uncompressedConfig = merge({}, config, {
       entry: {
         [distFileBaseName]: entry,
       },
@@ -232,7 +250,7 @@ All rights reserved.
     });
 
     // Production
-    const prodConfig = webpackMerge({}, config, {
+    const prodConfig = merge({}, config, {
       entry: {
         [`${distFileBaseName}.min`]: entry,
       },
@@ -247,7 +265,8 @@ All rights reserved.
         }),
       ],
       optimization: {
-        minimizer: [new OptimizeCSSAssetsPlugin({})],
+        minimize: true,
+        minimizer: [new CssMinimizerPlugin({})],
       },
     });
 

@@ -13,7 +13,7 @@ import {
   toRaw,
   watch,
 } from 'vue';
-import { isEqual } from 'lodash-es';
+import isEqual from 'lodash-es/isEqual';
 
 const Menu = {
   name: 'Menu',
@@ -34,7 +34,7 @@ const Menu = {
     watch(
       () => props.selectedKeys,
       () => {
-        selectedKeys.value = props.selectedKeys;
+        selectedKeys.value = props.selectedKeys || [];
       },
     );
     watch(

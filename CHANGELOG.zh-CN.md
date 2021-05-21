@@ -10,6 +10,65 @@
 
 ---
 
+## 2.1.6
+
+`2021-05-13`
+
+- 🐞 使用 vue@3.0.10 重新构建，避免控制台 warning [#3998](https://github.com/vueComponent/ant-design-vue/issues/3998)
+
+## 2.1.5
+
+`2021-05-12`
+
+- 🐞 修复 SSR 时报错问题 [#3983](https://github.com/vueComponent/ant-design-vue/issues/3983)
+
+## 2.1.4
+
+`2021-05-09`
+
+- 🐞 修复 `Table` 滚动错位问题 [#4045](https://github.com/vueComponent/ant-design-vue/issues/4045)
+- 🐞 修复 `Typography` editable 模式触发链接跳转问题 [#4105](https://github.com/vueComponent/ant-design-vue/issues/4105)
+- 🐞 修复 `Carousel` variableWidth 不生效问题 [#3977](https://github.com/vueComponent/ant-design-vue/issues/3977)
+- 🐞 修复 `TreeSelect` 无法通过键盘同时删除父子节点问题 [#3508](https://github.com/vueComponent/ant-design-vue/issues/3508)
+- 🐞 修复若干类型错误问题
+
+## 2.1.3
+
+`2021-04-25`
+
+- 🎉🎉🎉 移除 npm 安装时的广告
+- 🐞 `Select`
+  - 修复默认激活第一项问题 [#3842](https://github.com/vueComponent/ant-design-vue/issues/3842)
+  - 修复分组显示异常问题 [#3841](https://github.com/vueComponent/ant-design-vue/issues/3841)
+  - 修复动态更新选择项后滚动异常问题 [#3972](https://github.com/vueComponent/ant-design-vue/issues/3972)
+- 🐞 修复 `Checkbox` 触发两次 `update:checked` 问题 [#3838](https://github.com/vueComponent/ant-design-vue/issues/3838)
+- 🌟 `Table` column group 支持 fixed [#3882](https://github.com/vueComponent/ant-design-vue/issues/3882)
+- 🌟 `Table` column 支持 v-for [#3934](https://github.com/vueComponent/ant-design-vue/issues/3934)
+- 🐞 修复 `Table` 在 windows 显示横向滚动条问题 [6d33d6](https://github.com/vueComponent/ant-design-vue/commit/6d33d60d2bca98825f274e48bcc3badd1857f742)
+- 🌟 `Form` scrollToFirstError 支持选项参数传递 [#3918](https://github.com/vueComponent/ant-design-vue/issues/3918)
+- 🐞 修复 `Calendar` 月份选择器显示错误字符问题 [#3915](https://github.com/vueComponent/ant-design-vue/issues/3915)
+- 🌟 重构 `Switch` 组件，移除 defaultChecked 属性 [#3885](https://github.com/vueComponent/ant-design-vue/issues/3885)
+- 🐞 修复使用 Vite 时，抛出 process 异常问题 [#3930](https://github.com/vueComponent/ant-design-vue/issues/3930)
+- 🐞 修复 `Radio` 阴影遮挡问题 [#3955](https://github.com/vueComponent/ant-design-vue/issues/3955)
+- 🐞 修复 `Form` inline 模式下， span 不生效问题 [#3862](https://github.com/vueComponent/ant-design-vue/issues/3862)
+- 🐞 修复 `Cascader` keydown 选择不生效问题 [#958](https://github.com/vueComponent/ant-design-vue/issues/958)
+- 🐞 修复 `Image` 预览功能失败问题 [#3701](https://github.com/vueComponent/ant-design-vue/issues/3701)
+- 🐞 修复一些 TS 类型问题
+
+## 2.1.2
+
+`2021-03-28`
+
+- 🌟 使用 Vue 3.0.9 重新编译，兼容 3.0.7 及以下版本
+
+## 2.1.1
+
+`2021-03-27`
+
+- 🌟 兼容 Vue 3.0.8，注意：由于 3.0.8 的破坏性更新，2.1.1 无法兼容 3.0.7 以下版本 [vue#3493](https://github.com/vuejs/vue-next/issues/3493)
+- 🐞 修复 Modal.confirm 缺失 closable ts 类型 [#3684](https://github.com/vueComponent/ant-design-vue/issues/3845)
+- 🐞 修复 Upload 自定义 method 不生效问题 [#3843](https://github.com/vueComponent/ant-design-vue/issues/3843)
+
 ## 2.1.0
 
 `2021-03-20`
@@ -20,7 +79,7 @@
 - 🐞 修复 Drawer 销毁后报错问题 [#848d64](https://github.com/vueComponent/ant-design-vue/commit/848d6497e68c87566790dfa889a1913199a6699a)
 - 🐞 修复 BackTop 在 KeepAlive 激活时，位置不对的问题 [#3803](https://github.com/vueComponent/ant-design-vue/issues/3803)
 - 🐞 修复 TreeNode class 不生效问题 [#3822](https://github.com/vueComponent/ant-design-vue/issues/3822)
-- 🐞 修复 Table tags 为数组是报错问题 [#3812](https://github.com/vueComponent/ant-design-vue/issues/3812)
+- 🐞 修复 Table tags 为数组时报错问题 [#3812](https://github.com/vueComponent/ant-design-vue/issues/3812)
 - 🐞 修复 Table 自定义 filterIcon 时，触发排序问题 [#3819](https://github.com/vueComponent/ant-design-vue/issues/3819)
 - 🐞 修复 Select 样式在 Form 下错位问题 [#3781](https://github.com/vueComponent/ant-design-vue/issues/3781)
 

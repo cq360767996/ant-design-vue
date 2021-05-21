@@ -10,6 +10,65 @@
 
 ---
 
+## 2.1.6
+
+`2021-05-13`
+
+- 🐞 Use vue@3.0.10 to rebuild to avoid console warning [#3998](https://github.com/vueComponent/ant-design-vue/issues/3998)
+
+## 2.1.5
+
+`2021-05-12`
+
+- 🐞 Fix SSR time reporting error [#3983](https://github.com/vueComponent/ant-design-vue/issues/3983)
+
+## 2.1.4
+
+`2021-05-09`
+
+- 🐞 Fix `Table` scrolling misalignment issue [#4045](https://github.com/vueComponent/ant-design-vue/issues/4045)
+- 🐞 Fix `Typography` editable mode triggering link jump issue [#4105](https://github.com/vueComponent/ant-design-vue/issues/4105)
+- 🐞 Fix the issue that `Carousel` variableWidth does not take effect [#3977](https://github.com/vueComponent/ant-design-vue/issues/3977)
+- 🐞 Fix the problem that `TreeSelect` cannot delete parent and child nodes at the same time through the keyboard [#3508](https://github.com/vueComponent/ant-design-vue/issues/3508)
+- 🐞 Fix some types of errors
+
+## 2.1.3
+
+`2021-04-25`
+
+- 🎉🎉🎉 remove ads during npm installation
+- 🐞 `Select`
+  - Fix the first issue of default activation [#3842](https://github.com/vueComponent/ant-design-vue/issues/3842)
+  - Fix group display abnormal problem [#3841](https://github.com/vueComponent/ant-design-vue/issues/3841)
+  - Fix scrolling abnormal issue after dynamically updating selections [#3972](https://github.com/vueComponent/ant-design-vue/issues/3972)
+- 🐞 Fix the issue that `Checkbox` triggers twice `update:checked` [#3838](https://github.com/vueComponent/ant-design-vue/issues/3838)
+- 🌟 `Table` column group supports fixed [#3882](https://github.com/vueComponent/ant-design-vue/issues/3882)
+- 🌟 `Table` column supports v-for [#3934](https://github.com/vueComponent/ant-design-vue/issues/3934)
+- 🐞 Fix the problem that `Table` displays horizontal scroll bar on windows [6d33d6](https://github.com/vueComponent/ant-design-vue/commit/6d33d60d2bca98825f274e48bcc3badd1857f742)
+- 🌟 `Form` scrollToFirstError supports option parameter passing [#3918](https://github.com/vueComponent/ant-design-vue/issues/3918)
+- 🐞 Fix the issue of `Calendar` month selector displaying wrong characters [#3915](https://github.com/vueComponent/ant-design-vue/issues/3915)
+- 🌟 Refactor the `Switch` component and remove the defaultChecked attribute [#3885](https://github.com/vueComponent/ant-design-vue/issues/3885)
+- 🐞 Fix the process exception when using Vite [#3930](https://github.com/vueComponent/ant-design-vue/issues/3930)
+- 🐞 Fix `Radio` shadow occlusion problem [#3955](https://github.com/vueComponent/ant-design-vue/issues/3955)
+- 🐞 Fix the issue that span does not take effect in `Form` inline mode [#3862](https://github.com/vueComponent/ant-design-vue/issues/3862)
+- 🐞 Fix the issue that `Cascader` keydown selection does not take effect [#958](https://github.com/vueComponent/ant-design-vue/issues/958)
+- 🐞 Fix `Image` preview function failure problem [#3701](https://github.com/vueComponent/ant-design-vue/issues/3701)
+- 🐞 Fix some TS type issues
+
+## 2.1.2
+
+`2021-03-28`
+
+- 🌟 Recompile with Vue 3.0.9, compatible with 3.0.7 and below
+
+## 2.1.1
+
+`2021-03-27`
+
+- 🌟 Compatible with Vue 3.0.8, note: Due to the destructive update of 3.0.8, 2.1.1 is not compatible with versions below 3.0.7 [vue#3493](https://github.com/vuejs/vue-next/issues /3493)
+- 🐞 Fix Modal.confirm missing closable ts type [#3684](https://github.com/vueComponent/ant-design-vue/issues/3845)
+- 🐞 Fix upload custom method not working issue [#3843](https://github.com/vueComponent/ant-design-vue/issues/3843)
+
 ## 2.1.0
 
 `2021-03-20`

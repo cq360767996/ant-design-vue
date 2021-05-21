@@ -7,7 +7,7 @@ import {
   computed,
   onMounted,
 } from 'vue';
-import { isNumber } from 'lodash-es';
+import isNumber from 'lodash-es/isNumber';
 
 import BaseMixin from '../../_util/BaseMixin';
 import cn from '../../_util/classNames';
@@ -50,7 +50,7 @@ export const ImageProps = {
       visible: PropTypes.bool,
       onVisibleChange: PropTypes.func,
       getContainer: PropTypes.oneOf([PropTypes.func, PropTypes.bool]),
-    }),
+    }).loose,
   ]).def(true),
 };
 type ImageStatus = 'normal' | 'error' | 'loading';
@@ -281,7 +281,7 @@ const ImageInternal = defineComponent({
               mousePosition={mousePosition.value}
               src={mergedSrc}
               alt={alt}
-              getContainer={getPreviewContainer}
+              getContainer={getPreviewContainer.value}
             />
           )}
         </>

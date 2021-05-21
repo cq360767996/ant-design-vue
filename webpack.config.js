@@ -33,7 +33,7 @@ const babelConfig = {
         style: true,
       },
     ],
-    ['@vue/babel-plugin-jsx', { mergeProps: false }],
+    ['@vue/babel-plugin-jsx', { mergeProps: false, enableObjectSlots: false }],
     '@babel/plugin-proposal-optional-chaining',
     '@babel/plugin-transform-object-assign',
     '@babel/plugin-proposal-object-rest-spread',
@@ -42,6 +42,8 @@ const babelConfig = {
     '@babel/plugin-proposal-class-properties',
   ],
 };
+
+/** @type {import('webpack').Configuration} */
 
 module.exports = {
   mode: 'development',
@@ -116,9 +118,7 @@ module.exports = {
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: true,
-            },
+            options: {},
           },
           'css-loader',
         ],
@@ -141,7 +141,7 @@ module.exports = {
     hot: true,
     open: true,
   },
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'inline-cheap-module-source-map',
   plugins: [
     new MiniCssExtractPlugin({
       filename: '[name].css',
